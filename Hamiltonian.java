@@ -51,17 +51,23 @@ public class Hamilton {
         // Continue the Implementation
 
         // starting with base cases
-        /*
-         * if (g.isEmpty()) {
-         * return hamiltonian;
-         * }
-         * if (g.getTotalVertices() == 1) {
-         * return hamiltonian;
-         * }
-         * if (g.getTotalEdges() == 0) {
-         * return null;
-         * }
-         */
+
+        if (g.isEmpty()) {
+            return hamiltonian;
+        }
+        
+        if (g.getTotalVertices() == 1) {
+            return null;
+            
+        }
+        if (g.getTotalVertices() == 3) {
+            System.out.println(g.toString());
+            
+        }
+    
+        if (g.getTotalEdges() == 0) {
+            return null;
+        }
 
         // int[][] matrix = g.getAllEdges();
         for (int curVertex = 0; curVertex < totalV; curVertex++) { // try every vertex as a
@@ -100,9 +106,10 @@ public class Hamilton {
             int pathLength = path.getLength() + 1;
             if ((fromRow[connectedTo] > 0) && (!isIn(path, connectedTo))) {
                 if (pathLength < rowLength) {
-                    //System.out.println("1: " + path.toString());
+                    // System.out.println("1: " + path.toString());
+                    //System.out.println(path);
                     path.addVertex(connectedTo);
-                    //System.out.println("2: " + path.toString());
+                    // System.out.println("2: " + path.toString());
                     Walk res = findPath(g, path);
                     if (res != null) {
                         return res;
